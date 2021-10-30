@@ -1,34 +1,47 @@
 import React, {FC} from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
-import { createStackNavigator } from '@react-navigation/stack'
+import {createStackNavigator} from '@react-navigation/stack'
 
 import {RootTabNavigatorOptions, barStyle} from './options'
 import {RootNavigatorParamsList} from './routes'
 
+import Recipes from '../views/Recipes'
 import Profile from '../views/Profile'
 import PasswordReset from '../views/PasswordReset'
-import Login from '../views/Log-in'
+import Login from '../views/Login'
 import Registration from '../views/Registration'
 
 const Tab = createMaterialBottomTabNavigator<RootNavigatorParamsList>()
 
-const ProfileStack = createStackNavigator<RootNavigatorParamsList>()
+const Stack = createStackNavigator<RootNavigatorParamsList>()
 
 const Filler: FC = () => {
     return null
 }
 
-const StackNavigator: FC = () => {
+const ProfileNavigator: FC = () => {
     return (
-        <ProfileStack.Navigator screenOptions={{
+        <Stack.Navigator screenOptions={{
             header: () => null 
         }}>
-            <ProfileStack.Screen name='Login' component={Login}/>
-            <ProfileStack.Screen name='Registration' component={Registration}/>
-            <ProfileStack.Screen name='PasswordReset' component={PasswordReset}/>
-            <ProfileStack.Screen name='Profile' component={Profile}/>
-        </ProfileStack.Navigator>
+            <Stack.Screen name='Login' component={Login}/>
+            <Stack.Screen name='Registration' component={Registration}/>
+            <Stack.Screen name='PasswordReset' component={PasswordReset}/>
+            <Stack.Screen name='Profile' component={Profile}/>
+        </Stack.Navigator>
+    )
+}
+
+const RecipesNavigator: FC = () => {
+    return (
+        <Stack.Navigator screenOptions={{
+            header: () => null,
+            keyboardHandlingEnabled: true
+        }}>
+            <Stack.Screen name='Recipes' component={Recipes}/>
+            <Stack.Screen name='Recipe' component={Filler}/>
+        </Stack.Navigator>
     )
 }
 
@@ -41,9 +54,9 @@ const AppNavigator: FC = () => {
             // @ts-ignore
             screenOptions={RootTabNavigatorOptions}
             >
-                <Tab.Screen name='Recipes' component={Filler}/>
+                <Tab.Screen name='RecipesNavigator' component={RecipesNavigator}/>
                 <Tab.Screen name='Favourites' component={Filler}/>
-                <Tab.Screen name='ProfileNavigator' component={StackNavigator}/>
+                <Tab.Screen name='ProfileNavigator' component={ProfileNavigator}/>
             </Tab.Navigator>
         </NavigationContainer>
     )

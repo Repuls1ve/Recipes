@@ -1,11 +1,11 @@
-import React, {FC, useState} from 'react'
+import React, {FC} from 'react'
 import {View, Text, Image} from 'react-native'
 import {StackScreenProps} from '@react-navigation/stack'
 import {Formik, FormikHelpers} from 'formik'
 
 import {RootNavigatorParamsList} from '../../nav/routes'
 
-import {ResetPasswordSchema} from '../../utils/validation'
+import {ResetPasswordValidationSchema} from '../../utils/validation'
 
 import TextField from '../../components/TextField'
 import Button from '../../components/Button'
@@ -37,15 +37,15 @@ const PasswordReset: FC<PasswordResetProps> = () => {
             <Image source={backgroundImage} style={styles.topImage}/>
             <View style={styles.box}>
                 <View style={styles.content}>
+                    <Text style={styles.title}>Восстановление пароля</Text>
+                    <Text style={styles.description}>Введите свой email и мы отправим на него код для восстановления</Text>
                     <Formik
-                    validationSchema={ResetPasswordSchema}
+                    validationSchema={ResetPasswordValidationSchema}
                     initialValues={initialValues}
                     onSubmit={onSubmit}
                     >
                     {({handleChange, handleSubmit, values, errors}) => (
                         <>
-                        <Text style={styles.title}>Восстановление пароля</Text>
-                        <Text style={styles.description}>Введите свой email и мы отправим на него код для восстановления</Text>
                         <TextField
                             keyboardType='email-address'
                             onChangeText={handleChange('email')}

@@ -1,11 +1,12 @@
 import React, {FC} from 'react'
-import {useFonts, Inter_500Medium} from '@expo-google-fonts/inter'
+import {useFonts, Inter_500Medium, Inter_600SemiBold} from '@expo-google-fonts/inter'
 
 import AppNavigator from './src/nav/AppNavigator'
 
 const App: FC = () => {
   const [fontsLoaded] = useFonts({
-    Inter_500Medium
+    Inter_500Medium,
+    Inter_600SemiBold
   })
 
   if (!fontsLoaded) {

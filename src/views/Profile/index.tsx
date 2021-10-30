@@ -10,10 +10,11 @@ interface ProfileProps extends NavigationProps {
 }
 
 const Profile: FC<ProfileProps> = () => {
+
     return (
         <View>
             <Text>
-                Profile
+                Profile Page
             </Text>
         </View>
     )

@@ -33,7 +33,7 @@ export const LoginValidationSchema = yup.object().shape({
         .required('Пароль - обязательное поле')
 })
 
-export const ResetPasswordSchema = yup.object().shape({
+export const ResetPasswordValidationSchema = yup.object().shape({
     email: yup
         .string()
         .email('Введите правильный email')

@@ -4,8 +4,6 @@ import {RouteProp} from '@react-navigation/native'
 import {MaterialBottomTabNavigationOptions} from '@react-navigation/material-bottom-tabs'
 import {MaterialIcons} from '@expo/vector-icons'
 
-import iconNames from '../types/iconNames'
-
 import {RootNavigatorParamsList} from './routes'
 
 //Fix any type of navigation
@@ -16,13 +14,13 @@ type OptionsProps = {
 }
 
 export const RootTabNavigatorOptions = (props: OptionsProps): MaterialBottomTabNavigationOptions => ({
-    title: props.route.name === 'Recipes' ? 'Рецепты' :
+    title: props.route.name === 'RecipesNavigator' ? 'Рецепты' :
            props.route.name === 'Favourites' ? 'Избранное' :
            props.route.name === 'ProfileNavigator' ? 'Профиль' : '',
     tabBarIcon: ({color}) => {
-        let iconName: iconNames
+        let iconName: any
 
-        props.route.name === 'Recipes' ? iconName = 'restaurant' :
+        props.route.name === 'RecipesNavigator' ? iconName = 'restaurant' :
         props.route.name === 'Favourites' ? iconName = 'favorite' :
         props.route.name === 'ProfileNavigator' ? iconName = 'account-circle' : iconName = 'warning'
 

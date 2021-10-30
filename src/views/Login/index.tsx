@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react'
+import React, {FC} from 'react'
 import {View, Image, Text} from 'react-native'
 import {StackScreenProps} from '@react-navigation/stack'
 import {Formik, FormikHelpers} from 'formik'
