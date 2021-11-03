@@ -1,7 +1,9 @@
+import {Recipe} from '../types/recipe'
+
 export type RootNavigatorParamsList = {
     RecipesNavigator: undefined
     Recipes: undefined
-    Recipe: undefined     //Recipe data..
+    RecipeDetailed: Recipe
     Favourites: undefined
     ProfileNavigator: undefined
     Profile: undefined

@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
         paddingVertical: 25
     },
     button: {
-        marginTop: 2
+        marginTop: 2,
+        height: 50
     },
     content: {
         width: '100%',

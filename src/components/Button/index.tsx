@@ -1,19 +1,20 @@
 import React, {FC} from 'react'
-import {Text, TextProps, TouchableHighlight} from 'react-native'
+import {StyleProp, Text, TextStyle, TouchableOpacity, TouchableOpacityProps} from 'react-native'
 
 import styles from './styles'
 
 //Fix Value + Validation
 
-interface ButtonProps extends TextProps {
+interface ButtonProps extends TouchableOpacityProps {
     title: string
+    textStyle?: StyleProp<TextStyle>
 }
 
-const Button: FC<ButtonProps> = ({title, style, ...props}) => {
+const Button: FC<ButtonProps> = ({title, textStyle, style, ...props}) => {
     return (
-        <TouchableHighlight>
-            <Text style={[styles.button, style]} {...props}>{title}</Text>
-        </TouchableHighlight>
+        <TouchableOpacity style={style}>
+            <Text style={[styles.text, textStyle]} {...props}>{title}</Text>
+        </TouchableOpacity>
     )
 } 
 

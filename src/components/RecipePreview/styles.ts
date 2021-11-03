@@ -1,8 +1,6 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-    container: {
-    },
     image: {
         height: 200,
         width: '100%',
@@ -30,9 +28,6 @@ const styles = StyleSheet.create({
     time: {
         flexDirection: 'row',
         marginRight: 10
-    },
-    quantity: {
-        flexDirection: 'row',
     },
     icon: {
         fontSize: 19,

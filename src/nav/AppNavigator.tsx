@@ -7,6 +7,7 @@ import {RootTabNavigatorOptions, barStyle} from './options'
 import {RootNavigatorParamsList} from './routes'
 
 import Recipes from '../views/Recipes'
+import RecipeDetailed from '../views/RecipeDetailed'
 import Profile from '../views/Profile'
 import PasswordReset from '../views/PasswordReset'
 import Login from '../views/Login'
@@ -36,11 +37,10 @@ const ProfileNavigator: FC = () => {
 const RecipesNavigator: FC = () => {
     return (
         <Stack.Navigator screenOptions={{
-            header: () => null,
-            keyboardHandlingEnabled: true
+            header: () => null
         }}>
             <Stack.Screen name='Recipes' component={Recipes}/>
-            <Stack.Screen name='Recipe' component={Filler}/>
+            <Stack.Screen name='RecipeDetailed' component={RecipeDetailed}/>
         </Stack.Navigator>
     )
 }

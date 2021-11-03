@@ -1,11 +1,14 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-    button: {
+    container: {
+    },
+    text: {
         backgroundColor: '#4CAF50',
+        height: '100%',
+        width: '100%',
         textAlign: 'center',
         textAlignVertical: 'center',
-        height: 50,
         borderRadius: 70,
         color: 'white',
         fontFamily: 'Inter_500Medium'
