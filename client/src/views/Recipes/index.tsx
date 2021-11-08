@@ -5,7 +5,7 @@ import {MaterialIcons} from '@expo/vector-icons'
 
 import {RootNavigatorParamsList} from '../../nav/routes'
 import {Recipe} from '../../types/recipe'
-import {RecipesData} from '../../types/mockData'
+import {RecipesData} from '../../types/mock-data'
 import {Filters} from '../../types/filters'
 
 import RecipePreview from '../../components/RecipePreview'

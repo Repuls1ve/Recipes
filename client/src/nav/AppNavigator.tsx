@@ -3,6 +3,8 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
 
+import {useAppSelector} from '../hooks/redux'
+
 import {RootTabNavigatorOptions, barStyle} from './options'
 import {RootNavigatorParamsList} from './routes'
 
@@ -22,14 +24,25 @@ const Filler: FC = () => {
 }
 
 const ProfileNavigator: FC = () => {
+    const isAuth = useAppSelector(state => state.users.isAuth)
+
     return (
-        <Stack.Navigator screenOptions={{
-            header: () => null 
+        <Stack.Navigator
+        screenOptions={{
+            header: () => null,
         }}>
-            <Stack.Screen name='Login' component={Login}/>
-            <Stack.Screen name='Registration' component={Registration}/>
-            <Stack.Screen name='PasswordReset' component={PasswordReset}/>
-            <Stack.Screen name='Profile' component={Profile}/>
+        {
+        isAuth ?
+            <>
+                <Stack.Screen name='Profile' component={Profile}/>
+            </>
+        :
+            <>
+                <Stack.Screen name='Login' component={Login}/>
+                <Stack.Screen name='Registration' component={Registration}/>
+                <Stack.Screen name='PasswordReset' component={PasswordReset}/>
+            </>
+        }
         </Stack.Navigator>
     )
 }

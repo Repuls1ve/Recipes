@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 10,
-        marginBottom: 10,
+        marginBottom: 7,
         height: 50
     },
     content: {
@@ -62,6 +62,11 @@ const styles = StyleSheet.create({
     },
     error: {
         color: 'crimson',
+    },
+    serverError: {
+        color: 'crimson',
+        justifyContent: 'center',
+        alignSelf: 'center'
     }
 })
 

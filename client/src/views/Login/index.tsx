@@ -1,7 +1,10 @@
-import React, {FC} from 'react'
+import React, {FC, useEffect} from 'react'
 import {View, Image, Text} from 'react-native'
 import {StackScreenProps} from '@react-navigation/stack'
 import {Formik, FormikHelpers} from 'formik'
+
+import {useAppDispatch, useAppSelector} from '../../hooks/redux'
+import {signIn} from '../../store/slices/user-slice'
 
 import {RootNavigatorParamsList} from '../../nav/routes'
 
@@ -27,6 +30,19 @@ interface FormValues {
 }
 
 const Login: FC<LoginProps> = ({navigation}) => {
+    const {error, isAuth, isLoading} = useAppSelector(state => state.users)
+    const dispatch = useAppDispatch()
+
+    const toPasswordReset = () => navigation.navigate('PasswordReset')
+    const toRegistration = () => navigation.navigate('Registration')
+    const toProfile = () => navigation.navigate('Profile')
+
+    useEffect(() => {
+        if (isAuth) {
+            toProfile()
+        }
+    }, [isAuth])
+
     const initialValues: FormValues = {
         email: '',
         password: '',
@@ -34,11 +50,8 @@ const Login: FC<LoginProps> = ({navigation}) => {
     }
 
     const onSubmit = (values: FormValues, actions: FormikHelpers<FormValues>): void => {
-        alert(`${values.email}; ${values.password}`)
+        dispatch(signIn({email: values.email, password: values.password}))
     }
-
-    const toPasswordReset = () => navigation.navigate('PasswordReset')
-    const toRegistration = () => navigation.navigate('Registration')
 
     return (
         <View style={styles.container}>
@@ -85,11 +98,12 @@ const Login: FC<LoginProps> = ({navigation}) => {
                         <Button
                             style={styles.button}
                             onPress={handleSubmit as () => null}
-                            title="Войти"
+                            title={isLoading ? "Загрузка..." : "Войти"}
                         />
                         </>
                     )}
                     </Formik>
+                    {Boolean(error) && <Text style={styles.serverError}>{error}</Text>}
                     <View style={styles.registerHelper}>
                         <Text>Ещё не зарегистрированы? </Text>
                         <Text style={styles.register} onPress={toRegistration}>Регистрация</Text>
